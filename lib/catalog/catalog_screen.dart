@@ -24,27 +24,15 @@ class _CatalogScreenState extends State<CatalogScreen> {
       child: Scaffold(
         appBar: AppBar(
             title: const Text('Catálogo de Livros'),
+            leading: IconButton(
+                onPressed: () {
+                  controller.clearSearchBar();
+                  Navigator.of(context).pop();
+                },
+                icon: const Icon(Icons.arrow_back)),
             centerTitle: true,
             backgroundColor: Colors.purple[700]),
-        body: /*controller.listBook.isEmpty
-            ? controller.isLoading == true
-                ? Transform.scale(
-                    scale: 3,
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.purple[700],
-                        strokeWidth: 3,
-                      ),
-                    ))
-                : const Center(
-                    child: Text(
-                      'Nenhum livro registrado!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  )
-            :*/
-            SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(15.0),
             child: Column(
