@@ -1,3 +1,3 @@
 # Biblioteca
 
-Sistema de cadastro de livros básico, com crud (SQLite);
+Sistema de cadastro de livros básico com crud (SQLite e Flutter) ;
