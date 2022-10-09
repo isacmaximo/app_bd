@@ -15,15 +15,25 @@ enum OrderOptions {
 class HomeController extends ChangeNotifier {
   //key
   final formKey = GlobalKey<FormState>();
+  final searchKey = GlobalKey<FormState>();
+  //controllers dos inputs
   TextEditingController authorController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController categoryController = TextEditingController();
+  //controller da searchbar
+  TextEditingController searchController = TextEditingController();
 
+  //função que limpa os campos
   clearFiels() {
     authorController.clear();
     nameController.clear();
     categoryController.clear();
     notifyListeners();
+  }
+
+  //função que limpa a barra de pesquisa
+  clearSearchBar() {
+    searchController.clear();
   }
 
   //lista de livros a ser carregada
@@ -72,6 +82,13 @@ class HomeController extends ChangeNotifier {
     return list;
   }
 
+  //função de esconder o teclado
+  void hideKeyboard(FocusScopeNode currentFocus) {
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
+  }
+
   //função para organizar os ítens e retornar a lista na ordem (Filtro)
   filterBook(OrderOptions result) {
     var resultList = ordItems(result, listBook);
@@ -79,22 +96,45 @@ class HomeController extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool isLoading = false;
-
-  bool confirmDelete = false;
-
-  void notify() {
+  //função de pesquisar (barra de pesquisa)
+  searchTitle(String search) async {
+    listBook.clear();
+    isLoading = true;
+    notifyListeners();
+    final allRows = await dbHelper.queryAllRows();
+    if (allRows.isEmpty) {
+      isLoading = false;
+      notifyListeners();
+    } else {
+      for (var row in allRows) {
+        if (row['name'].toString().contains(search)) {
+          listBook.add(Book(
+              id: row['_id'],
+              author: row['author'],
+              name: row['name'],
+              category: row['category']));
+        }
+      }
+      isLoading = false;
+      notifyListeners();
+    }
     notifyListeners();
   }
 
+  //variável que indica estado de carregamento
+  bool isLoading = false;
+
   //verificação
   bool validate = false;
+  //frases de validação
   String validatorAuthor = 'Nome do autor é obrigatório!';
   String validatorName = 'Nome do livro é obrigatório!';
   String validatorCategory = 'Categoria do livro é obrigatória!';
 
+  //instancia do banco de dados (SQLite)
   final dbHelper = DB.instance;
 
+  //função de inserir livros
   void insertBook() async {
     // linha para incluir
     Map<String, dynamic> row = {
@@ -102,16 +142,18 @@ class HomeController extends ChangeNotifier {
       DB.columnName: nameController.text,
       DB.columnCategory: categoryController.text
     };
-    final id = await dbHelper.insert(row);
+    await dbHelper.insert(row);
     notifyListeners();
   }
 
+  //função de deletar um livro
   deleteBook(int? id) async {
     await dbHelper.delete(id!);
     getBook();
     notifyListeners();
   }
 
+  //função de atualizar um livro
   void updateBook(int? id) async {
     // linha para atualizar
     Map<String, dynamic> row = {
@@ -125,12 +167,16 @@ class HomeController extends ChangeNotifier {
     notifyListeners();
   }
 
+  //função de carregar os livros cadastrados
   void getBook() async {
     listBook.clear();
     isLoading = true;
+    notifyListeners();
     final allRows = await dbHelper.queryAllRows();
     if (allRows.isEmpty) {
-      print('Lista vazia');
+      //print('Lista vazia');
+      isLoading = false;
+      notifyListeners();
     } else {
       for (var row in allRows) {
         listBook.add(Book(
@@ -140,6 +186,7 @@ class HomeController extends ChangeNotifier {
             category: row['category']));
       }
       isLoading = false;
+      notifyListeners();
     }
 
     //listBook.add(value)

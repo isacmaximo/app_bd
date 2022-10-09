@@ -13,7 +13,7 @@ class CustomFilter extends StatelessWidget {
       children: [
         const Text(
           'Filtro',
-          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 16),
         ),
         PopupMenuButton<OrderOptions>(
           color: Colors.blueGrey,
