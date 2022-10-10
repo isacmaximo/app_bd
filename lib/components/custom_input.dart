@@ -25,14 +25,19 @@ class CustomInput extends StatelessWidget {
           height: 5,
         ),
         TextFormField(
+          cursorColor: Colors.black,
           controller: controller,
           validator: (String? value) {
             if (value == null || value.isEmpty) {
               return validatorMessage;
             }
+            return null;
           },
           keyboardType: keyboardType ?? TextInputType.text,
           decoration: InputDecoration(
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30.0),
+                borderSide: const BorderSide(color: Colors.purple)),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30.0),
             ),

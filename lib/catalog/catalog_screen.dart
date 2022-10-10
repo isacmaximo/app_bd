@@ -83,13 +83,14 @@ class _CatalogScreenState extends State<CatalogScreen> {
                                   ),
                                 )),
                           )
-                        : const Center(
-                            child: Text(
-                            'Nenhum livro registrado!',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
-                          ))
+                        : Padding(
+                            padding: EdgeInsets.only(top: size.height * 0.3),
+                            child: const Text(
+                              'Nenhum livro registrado!',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ))
                     : controller.listBook.isEmpty &&
                             controller.searchController.text.isNotEmpty
                         ? Padding(

@@ -43,6 +43,7 @@ class _CustomSearchBarState extends State<CustomSearchBar> {
             width: size.width * 0.5,
             height: size.height * 0.05,
             child: TextFormField(
+                cursorColor: Colors.black,
                 controller: widget.controller,
                 decoration: InputDecoration(
                     border: InputBorder.none,

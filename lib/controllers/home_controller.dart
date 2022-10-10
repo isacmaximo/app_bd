@@ -107,7 +107,10 @@ class HomeController extends ChangeNotifier {
       notifyListeners();
     } else {
       for (var row in allRows) {
-        if (row['name'].toString().contains(search)) {
+        if (row['name']
+            .toString()
+            .toLowerCase()
+            .contains(search.toLowerCase())) {
           listBook.add(Book(
               id: row['_id'],
               author: row['author'],
