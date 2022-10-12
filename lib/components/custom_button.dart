@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
                 otherSize ?? Size(size.width * 0.5, size.height * 0.06)),
         child: Text(
           title,
-          style: const TextStyle(fontSize: 18),
+          style: TextStyle(fontSize: size.width * 0.04),
         ));
   }
 }

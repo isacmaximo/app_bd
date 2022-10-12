@@ -42,10 +42,13 @@ class CustomCardInitial extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                    fontSize: 25,
+                style: TextStyle(
+                    fontSize: size.width * 0.055,
                     color: Colors.white,
                     fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: size.height * 0.015,
               ),
               Icon(
                 icon,

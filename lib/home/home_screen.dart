@@ -35,10 +35,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(
                   height: size.height * 0.02,
                 ),
-                const Text(
+                Text(
                   'Bem-vindo ao sistema!\nEscolha uma opção abaixo:',
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontSize: size.width * 0.05, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: size.height * 0.05,

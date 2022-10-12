@@ -21,7 +21,7 @@ class CustomCardBook extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: size.height * 0.015),
       width: size.width * 0.8,
-      height: size.height * 0.26,
+      height: size.height * 0.27,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
@@ -46,12 +46,21 @@ class CustomCardBook extends StatelessWidget {
         child: Column(
           children: [
             RowBookInfo(title: title, indicator: 'Título: ', icon: Icons.book),
+            SizedBox(
+              height: size.height * 0.0025,
+            ),
             RowBookInfo(
                 title: author, indicator: 'Autor: ', icon: Icons.person),
+            SizedBox(
+              height: size.height * 0.0025,
+            ),
             RowBookInfo(
                 title: category,
                 indicator: 'Categoria: ',
                 icon: Icons.category),
+            SizedBox(
+              height: size.height * 0.01,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
@@ -60,8 +69,9 @@ class CustomCardBook extends StatelessWidget {
                       shape: BoxShape.circle, color: Colors.purple),
                   child: IconButton(
                       onPressed: onEdit,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.edit,
+                        size: size.width * 0.056,
                         color: Colors.white,
                       )),
                 ),
@@ -73,8 +83,9 @@ class CustomCardBook extends StatelessWidget {
                       shape: BoxShape.circle, color: Colors.purple),
                   child: IconButton(
                       onPressed: onDelete,
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.delete,
+                        size: size.width * 0.056,
                         color: Colors.white,
                       )),
                 ),
@@ -115,7 +126,7 @@ class RowBookInfo extends StatelessWidget {
         Text(
           indicator,
           style: const TextStyle(
-              fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
+              fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
         ),
         Flexible(
           child: TextScroll(

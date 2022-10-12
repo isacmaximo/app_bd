@@ -17,7 +17,7 @@ class CustomDialog extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       content: Container(
         width: size.width * 0.8,
-        height: size.height * 0.22,
+        height: size.height * 0.25,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
@@ -43,23 +43,27 @@ class CustomDialog extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                    fontSize: 20,
+                style: TextStyle(
+                    fontSize: size.width * 0.05,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: size.height * 0.02,
               ),
-              Text(
-                message,
-                style: const TextStyle(
-                    fontSize: 16,
-                    color: Colors.black45,
-                    fontWeight: FontWeight.w500),
+              SizedBox(
+                width: size.width * 0.7,
+                child: Text(
+                  message,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: size.width * 0.04,
+                      color: Colors.black45,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
               SizedBox(
-                height: size.height * 0.02,
+                height: size.height * 0.06,
               ),
               CustomButton(
                 title: 'Ok',
@@ -94,7 +98,7 @@ class CustomDialog2 extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       content: Container(
         width: size.width * 0.8,
-        height: size.height * 0.22,
+        height: size.height * 0.25,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
@@ -120,8 +124,8 @@ class CustomDialog2 extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(
-                    fontSize: 20,
+                style: TextStyle(
+                    fontSize: size.width * 0.05,
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
@@ -130,13 +134,13 @@ class CustomDialog2 extends StatelessWidget {
               ),
               Text(
                 message,
-                style: const TextStyle(
-                    fontSize: 16,
+                style: TextStyle(
+                    fontSize: size.width * 0.04,
                     color: Colors.black45,
                     fontWeight: FontWeight.w500),
               ),
               SizedBox(
-                height: size.height * 0.02,
+                height: size.height * 0.03,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
