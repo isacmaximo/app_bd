@@ -17,7 +17,7 @@ class CustomDialog extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       content: Container(
         width: size.width * 0.8,
-        height: size.height * 0.25,
+        height: size.width <= 360 ? size.height * 0.265 : size.height * 0.25,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
@@ -98,7 +98,7 @@ class CustomDialog2 extends StatelessWidget {
       contentPadding: EdgeInsets.zero,
       content: Container(
         width: size.width * 0.8,
-        height: size.height * 0.25,
+        height: size.width <= 360 ? size.height * 0.28 : size.height * 0.25,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),

@@ -21,7 +21,7 @@ class CustomCardBook extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: size.height * 0.015),
       width: size.width * 0.8,
-      height: size.height * 0.27,
+      height: size.width <= 360 ? size.height * 0.3 : size.height * 0.27,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),

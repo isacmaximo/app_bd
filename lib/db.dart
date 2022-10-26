@@ -41,9 +41,9 @@ class DB {
     await db.execute('''
           CREATE TABLE $table (
             $columnId INTEGER PRIMARY KEY,
-            $columnAuthor INTEGER NOT NULL,
+            $columnAuthor TEXT NOT NULL,
             $columnName TEXT NOT NULL,
-            $columnCategory INTEGER NOT NULL
+            $columnCategory TEXT NOT NULL
           )
           ''');
   }
