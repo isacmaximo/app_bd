@@ -4,7 +4,7 @@ import 'package:app_bd/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../components/custom_input.dart';
+import '../../components/custom_input.dart';
 
 class EditScreeen extends StatefulWidget {
   final int id;

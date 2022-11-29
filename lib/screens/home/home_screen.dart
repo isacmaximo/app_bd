@@ -1,6 +1,6 @@
 import 'package:app_bd/components/custom_card_initial.dart';
 import 'package:app_bd/controllers/home_controller.dart';
-import 'package:app_bd/registration/registration_screen.dart';
+import 'package:app_bd/screens/registration/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

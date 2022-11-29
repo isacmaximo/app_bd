@@ -1,6 +1,6 @@
 import 'package:app_bd/components/custom_card_book.dart';
 import 'package:app_bd/components/custom_dialog.dart';
-import 'package:app_bd/edit/edit_screen.dart';
+import 'package:app_bd/screens/edit/edit_screen.dart';
 import 'package:app_bd/models/book.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

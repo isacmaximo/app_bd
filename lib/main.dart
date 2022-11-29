@@ -1,5 +1,5 @@
 import 'package:app_bd/controllers/home_controller.dart';
-import 'package:app_bd/home/home_screen.dart';
+import 'package:app_bd/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
