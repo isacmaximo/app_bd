@@ -1,6 +1,8 @@
+import 'package:app_bd/components/custom_dialog.dart';
 import 'package:app_bd/models/book.dart';
 import 'package:app_bd/db.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 //enum de opções do filtro
 enum OrderOptions {
@@ -196,5 +198,77 @@ class HomeController extends ChangeNotifier {
     //print('Consulta todas as linhas:');
     //allRows.forEach((row) => print(row));
     notifyListeners();
+  }
+
+  showSaveDialog(BuildContext context) {
+    FocusScope.of(context).requestFocus(FocusNode());
+    var validate = formKey.currentState?.validate();
+    if (validate == true) {
+      insertBook();
+      clearFiels();
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return CustomDialog(
+              title: 'Livro salvo com sucesso!',
+              message: 'O livro pode ser visto no catálogo',
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            );
+          });
+    }
+    notifyListeners();
+  }
+
+  showDeleteDialog(BuildContext context, int? id) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CustomDialog2(
+            title: 'Deseja realmente\ndeletar este livro?',
+            message: 'Essa ação não pode ser desfeita',
+            onCancel: () {
+              Navigator.of(context).pop();
+            },
+            onConfirm: () {
+              Navigator.of(context).pop();
+              deleteBook(id);
+              showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return CustomDialog(
+                      title: 'Livro excluído com sucessso!',
+                      message: 'Alteração de catálogo concluída!',
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    );
+                  });
+            },
+          );
+        });
+  }
+
+  showEditDialog(BuildContext context, int? id) {
+    FocusScope.of(context).requestFocus(FocusNode());
+    var validate = formKey.currentState?.validate();
+    if (validate == true) {
+      updateBook(id);
+
+      Navigator.of(context).pop();
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return CustomDialog(
+              title: 'Livro editado com sucesso!',
+              message: 'O livro pode ser visto no catálogo',
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            );
+          });
+      clearFiels();
+    }
   }
 }

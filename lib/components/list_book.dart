@@ -24,32 +24,7 @@ class ListBook extends StatelessWidget {
               author: listBook[index].author,
               category: listBook[index].category,
               onDelete: () {
-                showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return CustomDialog2(
-                        title: 'Deseja realmente\ndeletar este livro?',
-                        message: 'Essa ação não pode ser desfeita',
-                        onCancel: () {
-                          Navigator.of(context).pop();
-                        },
-                        onConfirm: () {
-                          Navigator.of(context).pop();
-                          controller.deleteBook(listBook[index].id);
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return CustomDialog(
-                                  title: 'Livro excluído com sucessso!',
-                                  message: 'Alteração de catálogo concluída!',
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                );
-                              });
-                        },
-                      );
-                    });
+                controller.showDeleteDialog(context, listBook[index].id);
               },
               onEdit: () {
                 controller.authorController.text = listBook[index].author;

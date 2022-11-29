@@ -1,5 +1,4 @@
 import 'package:app_bd/components/custom_button.dart';
-import 'package:app_bd/components/custom_dialog.dart';
 import 'package:app_bd/components/hide_keyboard.dart';
 import 'package:app_bd/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
@@ -68,26 +67,7 @@ class _EditScreeenState extends State<EditScreeen> {
                     CustomButton(
                       title: 'Editar Livro',
                       onPressed: () {
-                        FocusScope.of(context).requestFocus(FocusNode());
-                        var validate =
-                            controller.formKey.currentState?.validate();
-                        if (validate == true) {
-                          controller.updateBook(widget.id);
-
-                          Navigator.of(context).pop();
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return CustomDialog(
-                                  title: 'Livro editado com sucesso!',
-                                  message: 'O livro pode ser visto no catálogo',
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                );
-                              });
-                          controller.clearFiels();
-                        }
+                        controller.showEditDialog(context, widget.id);
                       },
                     ),
                     SizedBox(

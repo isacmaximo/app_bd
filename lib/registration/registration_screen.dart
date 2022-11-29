@@ -66,24 +66,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   CustomButton(
                     title: 'Salvar Livro',
                     onPressed: () {
-                      FocusScope.of(context).requestFocus(FocusNode());
-                      var validate =
-                          controller.formKey.currentState?.validate();
-                      if (validate == true) {
-                        controller.insertBook();
-                        controller.clearFiels();
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return CustomDialog(
-                                title: 'Livro salvo com sucesso!',
-                                message: 'O livro pode ser visto no catálogo',
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                              );
-                            });
-                      }
+                      controller.showSaveDialog(context);
                     },
                   ),
                   SizedBox(
