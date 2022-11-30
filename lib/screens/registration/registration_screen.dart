@@ -25,7 +25,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             title: const Text('Registrar Livro'),
             leading: IconButton(
                 onPressed: () {
-                  controller.clearFiels();
+                  controller.clearFields();
                   Navigator.of(context).pop();
                 },
                 icon: const Icon(Icons.arrow_back)),

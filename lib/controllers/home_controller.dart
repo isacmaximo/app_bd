@@ -25,7 +25,7 @@ class HomeController extends ChangeNotifier {
   TextEditingController searchController = TextEditingController();
 
   //função que limpa os campos
-  clearFiels() {
+  clearFields() {
     authorController.clear();
     nameController.clear();
     categoryController.clear();
@@ -204,7 +204,7 @@ class HomeController extends ChangeNotifier {
     var validate = formKey.currentState?.validate();
     if (validate == true) {
       insertBook();
-      clearFiels();
+      clearFields();
       showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -267,7 +267,7 @@ class HomeController extends ChangeNotifier {
               },
             );
           });
-      clearFiels();
+      clearFields();
     }
   }
 }

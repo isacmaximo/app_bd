@@ -63,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   title: 'Registrar Livro',
                   icon: Icons.save,
                   onPressed: () {
-                    controller.clearFiels();
+                    controller.clearFields();
                     Navigator.push(
                       context,
                       MaterialPageRoute(

@@ -26,7 +26,7 @@ class _EditScreeenState extends State<EditScreeen> {
               title: const Text('Editar Livro'),
               leading: IconButton(
                   onPressed: () {
-                    controller.clearFiels();
+                    controller.clearFields();
                     Navigator.of(context).pop();
                   },
                   icon: const Icon(Icons.arrow_back)),
